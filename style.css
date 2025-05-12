@@ -68,16 +68,19 @@ div label {
 /* Sidebar styles */
 .layout {
     display: flex;
-    gap: 48px;
+    min-height: 100vh;
 }
 
 .sidebar {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 250px;
     height: 100vh;
     background: #f6f8fa;
     padding: 32px 24px;
     border-right: 1px solid #e1e4e8;
+    box-sizing: border-box;
 }
 
 .sidebar h1 {
@@ -113,6 +116,8 @@ div label {
 /* Main content styles */
 main {
     margin-left: 298px;
+    max-width: 50rem;
+    padding: 3rem;
     width: 100%;
-    max-width: 800px;
+    box-sizing: border-box;
 }
