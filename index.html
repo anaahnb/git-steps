@@ -1,34 +1,196 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guia de Desenvolvimento</title>
-  <link rel="stylesheet" href="reset.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Git e Github</title>
+
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 </head>
+
 <body>
   <div class="layout">
     <aside class="sidebar">
       <h1>Guia de Desenvolvimento</h1>
       <nav>
-        <a href="/pages/github" class="nav-link">Git e Github</a>
+        <a href="/index.html" class="nav-link active">Git e Github</a>
         <a href="/pages/dashboard" class="nav-link">Dashboard</a>
       </nav>
     </aside>
 
     <main>
       <article>
-        <h1>Bem-vindo ao Guia de Desenvolvimento</h1>
-        <p>Este guia contém recursos e tutoriais para ajudar você a começar com desenvolvimento web.</p>
-        <p>Escolha um tópico no menu lateral para começar:</p>
-        <ul>
-          <li>Git e Github - Aprenda controle de versão</li>
-          <li>Dashboard - Construa visualizações de dados</li>
-        </ul>
+        <h1>Instalação do Git e uso com GitHub</h1>
+
+        <section>
+          <h2>Instalação do Git</h2>
+
+          <div>
+            <input id="step1" type="checkbox">
+            <label for="step1">
+              Acesse o site
+              <a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a>
+              e baixe o arquivo referente ao seu sistema operacional.
+            </label>
+          </div>
+
+          <div>
+            <input id="step2" type="checkbox">
+            <label for="step2">
+              Execute o instalador baixado e siga as instruções de instalação padrão.
+            </label>
+          </div>
+
+          <div>
+            <input id="step5" type="checkbox">
+            <label for="step5">
+              Complete a instalação e verifique se o Git foi instalado corretamente abrindo o terminal e digitando:
+            </label>
+            <div class="code-block">git --version</div>
+            <span class="info">ℹ️ Você deve ver a versão do Git instalada, como "git version 2.40.0".</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Configuração inicial do Git</h2>
+
+          <div>
+            <input id="step6" type="checkbox">
+            <label for="step6">
+              Configure seu nome de usuário do Git:
+            </label>
+            <div class="code-block">git config --global user.name "Seu Nome"</div>
+          </div>
+
+          <div>
+            <input id="step7" type="checkbox">
+            <label for="step7">
+              Configure seu email do Git (use o mesmo email do GitHub):
+            </label>
+            <div class="code-block">git config --global user.email "seuemail@exemplo.com"</div>
+          </div>
+
+          <div>
+            <input id="step8" type="checkbox">
+            <label for="step8">
+              Verifique suas configurações:
+            </label>
+            <div class="code-block">git config --list</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Crie um repositório no Github</h2>
+
+          <div>
+            <input id="step12" type="checkbox">
+            <label for="step12">
+              Crie um repositório no Github
+            </label>
+          </div>
+
+          <div>
+            <input id="step13" type="checkbox">
+            <label for="step13">
+              Adicione os integrantes da equipe no repositório em Settings > Collaborators
+            </label>
+            <span class="info">ℹ️ O colaborador receberá um email com convite para participar do seu repositório e deve
+              aceitar o convite para acessá-lo.</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Clonando o repositório para sua máquina</h2>
+
+          <div>
+            <input id="step18" type="checkbox">
+            <label for="step18">
+              No seu repositório no GitHub, clique no botão verde "Code" e copie a URL HTTPS.
+            </label>
+          </div>
+
+          <div>
+            <input id="step19" type="checkbox">
+            <label for="step19">
+              Navegue até a pasta onde deseja clonar o repositório e abra o terminal no seu computador
+            </label>
+          </div>
+
+          <div>
+            <input id="step20" type="checkbox">
+            <label for="step20">
+              Clone o repositório usando o comando git clone:
+            </label>
+            <div class="code-block">git clone https://github.com/seu-usuario/meu-primeiro-projeto.git</div>
+          </div>
+
+          <div>
+            <input id="step21" type="checkbox">
+            <label for="step21">
+              Entre na pasta do repositório clonado:
+            </label>
+            <div class="code-block">cd meu-primeiro-projeto</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Primeiro commit</h2>
+
+          <div>
+            <input id="step24" type="checkbox">
+            <label for="step24">
+              Adicione os arquivos para serem rastreados pelo Git:
+            </label>
+            <div class="code-block">git add .</div>
+          </div>
+
+          <div>
+            <input id="step26" type="checkbox">
+            <label for="step26">
+              Faça um commit das alterações:
+            </label>
+            <div class="code-block">git commit -m "Initial commit"</div>
+          </div>
+
+          <div>
+            <input id="step27" type="checkbox">
+            <label for="step27">
+              Envie (push) as alterações para o GitHub:
+            </label>
+            <div class="code-block">git push origin main</div>
+            <span class="info">ℹ️ Agora você pode acessar o seu repositório no GitHub e verificar se os arquivos foram
+              enviados com sucesso.</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Atualizando seu repositório local</h2>
+
+          <div>
+            <input id="step29" type="checkbox">
+            <label for="step29">
+              Atualize seu repositório local antes de começar a trabalhar:
+            </label>
+            <div class="code-block">git pull origin main</div>
+            <span class="warning">⚠️ Lembre-se de sempre utilizar esse comando antes de commitar uma alteração.</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Conclusão</h2>
+          <p>Parabéns! Você aprendeu os comandos básicos do Git e como usar o GitHub para controle de versão dos seus
+            projetos. Continue praticando esses comandos para se familiarizar com o fluxo de trabalho do Git.</p>
+        </section>
       </article>
     </main>
   </div>
+
+  <script src="./main.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward" />
 </body>
+
 </html>
