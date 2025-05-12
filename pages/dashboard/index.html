@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../reset.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <article>
+
+    <h1>Como construir uma representação gráfica?</h1>
+    <p>Este exemplo carrega dados do IDEB (Índice de Desenvolvimento da Educação Básica) de uma escola pública usando a <a href="https://api.qedu.org.br/dashboard"> API do QEdu</a> e exibe esses dados em totalizadores dinâmicos.</p>
+
+    <p class="codepen" data-height="650" data-default-tab="result" data-slug-hash="myyaRLW" data-pen-title="Dashboard" data-user="anaahnb" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+      <span>See the Pen <a href="https://codepen.io/anaahnb/pen/myyaRLW">
+      Dashboard</a> by Ana Julia (<a href="https://codepen.io/anaahnb">@anaahnb</a>)
+      on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://public.codepenassets.com/embed/index.js"></script>
+
+    <section>
+      <h2>Autenticação e Requisição</h2>
+      A API do QEdu exige:
+      <ul>
+        <li>Um token de acesso, enviado no cabeçalho da requisição</li>
+        <li>Parâmetros obrigatórios, dependendo do endpoint.</li>
+      </ul>
+
+      <h3>Parâmetros</h3>
+      <p>
+        Ao consumir uma API, é preciso consultar a <strong>documentação oficial</strong> para saber quais parâmetros devem ser passados. Cada endpoint pode exigir diferentes valores obrigatórios. No nosso caso, usamos o endpoint <code>/v1/ideb</code>, que exige:
+      </p>
+      <ul>
+        <li><strong>id:</strong> código do município ou escola</li>
+        <li><strong>ano:</strong> ano da avaliação (ex: 2019)</li>
+        <li><strong>dependencia_id:</strong> tipo de rede (1 = Federal, 2 = Estadual, 3 = Municipal)</li>
+        <li><strong>ciclo_id:</strong> etapa de ensino (EF = Ensino Fundamental, EM = Ensino Médio)</li>
+      </ul>
+
+      <p>Esses dados são passados usando o Axios, uma biblioteca para fazer requisições HTTP:</p>
+      <div class="code-block">axios.get(baseURL, options)</div>
+      O objeto <code>options</code> contém os headers (incluindo o token) e os parâmetros.
+    </section>
+
+    <section>
+      <h2>Tratamento dos Dados</h2>
+      <p>Após a resposta da API, o código verifica se os dados existem usando:</p>
+      <div class="code-block">response.data.data.length</div>
+      <p>Se houver dados, os principais indicadores são organizados em um array contendo:</p>
+      <ul>
+        <li><strong>ideb</strong></li>
+        <li><strong>aprendizado</strong></li>
+        <li><strong>fluxo</strong></li>
+        <li><strong>aprovação</strong></li>
+        <li>Um <strong>card extra</strong> com informações do ano e tipo de escola</li>
+      </ul>
+      <p>Cada item do array é transformado dinamicamente em um card HTML com as seguintes partes:</p>
+      <ul>
+        <li><strong>Título</strong> – classe <code>card-title</code></li>
+        <li><strong>Valor</strong> – classe <code>card-value</code></li>
+        <li><strong>Descrição</strong> – classe <code>card-description</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tratamento de Erros e Estado de Carregamento</h2>
+      <ul>
+        <li>Enquanto os dados estão sendo buscados, é exibida a mensagem: <strong>“Carregando dados...”</strong></li>
+        <li>Se a requisição falhar, é mostrada uma mensagem de erro com o status retornado pela API.</li>
+        <li>Se houver erro ao montar os cards, o usuário também é avisado.</li>
+      </ul>
+    </section>
+
+  </article>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
